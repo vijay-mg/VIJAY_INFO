@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title></title>
+<style type="text/css">
+
+.container-marquee{
+position: relative;
+width:100%; /*marquee width */
+overflow: hidden;
+background-color: black;
+padding: 2px;
+padding-left: 4px;
+cursor: pointer;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var zxcMarquee={
+
+ init:function(o){
+  var mde=o.Mode,mde=typeof(mde)=='string'&&mde.charAt(0).toUpperCase()=='H'?['left','offsetWidth','top','width']:['top','offsetHeight','left','height'],id=o.ID,srt=o.StartDelay,ud=o.StartDirection,p=document.getElementById(id),obj=p.getElementsByTagName('DIV')[0],sz=obj[mde[1]],clone;
+  p.style.overflow='hidden';
+  obj.style.position='absolute';
+  obj.style[mde[0]]='0px';
+  obj.style[mde[3]]=sz+'px';
+  clone=obj.cloneNode(true);
+  clone.style[mde[0]]=sz+'px';
+  clone.style[mde[2]]='0px';
+  obj.appendChild(clone);
+  o=this['zxc'+id]={
+   obj:obj,
+   mde:mde[0],
+   sz:sz
+  }
+  if (typeof(srt)=='number'){
+   o.dly=setTimeout(function(){ zxcMarquee.scroll(id,typeof(ud)=='number'?ud:-1); },srt);
+  }
+  else {
+   this.scroll(id,0)
+  }
+ },
+
+ scroll:function(id,ud){
+  var oop=this,o=this['zxc'+id],p;
+  if (o){
+   ud=typeof(ud)=='number'?ud:0;
+   clearTimeout(o.dly);
+   p=parseInt(o.obj.style[o.mde])+ud;
+   if ((ud>0&&p>0)||(ud<0&&p<-o.sz)){
+    p+=o.sz*(ud>0?-1:1);
+   }
+   o.obj.style[o.mde]=p+'px';
+   o.dly=setTimeout(function(){ oop.scroll(id,ud); },20);
+  }
+ }
+}
+
+function init(){
+
+ zxcMarquee.init({
+  ID:'scroll_text',     // the unique ID name of the parent DIV.                        (string)
+  Mode:'Vertical',   //(optional) the mode of execution, 'Vertical' or 'Horizontal'. (string, default = 'Vertical')
+  StartDelay:500,   //(optional) the auto start delay in milli seconds'.            (number, default = no auto start)
+  StartDirection:-1  //(optional) the auto start scroll direction'.                  (number, default = -1)
+ });
+document.getElementById("scroll_text").style.height = window.innerHeight-20+"px";
+
+}
+
+if (window.addEventListener)
+ window.addEventListener("load", init, false)
+else if (window.attachEvent)
+ window.attachEvent("onload", init)
+else if (document.getElementById)
+ window.onload=init
+
+
+</script>
+
+</head>
+
+<body>
+<div id="scroll_text" class="container-marquee" onmouseover="zxcMarquee.scroll('scroll_text',0);" onmouseout="zxcMarquee.scroll('scroll_text',-1);">
+<div style="position: absolute; width: 98%;">
+	<center>
+ <font color="#ffffff" size="5">
+	<strong> 
+	<br/><br/>
+		<center> Zenith Hot List</center>
+	<table style="width:100%">
+	<tr bgcolor="5F88EC">
+   		<td>Company</td>
+		<td>Name</td>
+		<td>Technology</td>
+		<td>Experience</td>
+   		<td>Location</td>
+		<td>ReLocation</td>
+		<td>Rate</td>
+		<td>Recruiter</td>
+	</tr>
+	<br/>
+		<tr>
+		<td>ZW2</td>
+		<td>Rakesh</td>
+		<td>C++</td>
+		<td>13+ Years</td>
+		<td>MA</td>
+		<td>Open</td>
+		<td>$70/hr</td>
+		<td>Srinivas</td>
+	</tr>
+	<tr>
+		<td>ZW2</td>
+		<td>Sridhar</td>
+		<td>SAS </td>
+		<td>6+ Years</td>
+		<td>TX</td>
+		<td>Open</td>
+		<td>$60/hr</td>
+		<td>Srinivas</td>
+	</tr>
+	<table>
+<br/><br/><br/>
+	<center>Finacle Hot List</center>
+  <table style="width:100%">
+	<tr bgcolor="F46B11">
+   		<td>Company</td>
+		<td>Name</td>
+		<td>Technology</td>
+		<td>Experience</td>
+   		<td>Location</td>
+		<td>ReLocation</td>
+		<td>Rate</td>
+		<td>Recruiter</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Veena</td>
+		<td>Java</td>
+		<td>8+ Years</td>
+		<td>OR</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Uday</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Tiksha</td>
+		<td>.Net/C# </td>
+		<td>6+ Years</td>
+		<td>TX</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Uday</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Siddharth</td>
+		<td>Java</td>
+		<td>6+ Years</td>
+		<td>NJ</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Venkat</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Kalyan</td>
+		<td>SF/Admin</td>
+		<td>6+ Years</td>
+		<td>NJ</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Venkat</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Moulika</td>
+		<td>SAS</td>
+		<td>5+ Years</td>
+		<td>NJ</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Venkat</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Prasanna</td>
+		<td>QA</td>
+		<td>8+ Years</td>
+		<td>NY</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Venkat</td>
+	</tr>
+	<tr>
+		<td>FW2</td>
+		<td>Sonam</td>
+		<td>Oracle DBA</td>
+		<td>7+ Years</td>
+		<td>NJ</td>
+		<td>NJ, NY</td>
+		<td>$55/hr</td>
+		<td>Srinivas</td>
+	</tr>
+	<table>
+	<br/><br/><br/>
+		<center> H1T Hot List</center>
+	<table style="width:100%">
+	<tr bgcolor="07A81A">
+   		<td>Company</td>
+		<td>Name</td>
+		<td>Technology</td>
+		<td>Experience</td>
+   		<td>Location</td>
+		<td>ReLocation</td>
+		<td>Rate</td>
+		<td>Recruiter</td>
+	</tr>
+	<tr></tr>
+	<tr>
+		<td>ZC2C</td>
+		<td>Shiva</td>
+		<td>Java Architect</td>
+		<td>16+ Years</td>
+		<td>NJ</td>
+		<td>NJ,NY</td>
+		<td>$100/hr</td>
+		<td>Srinivas</td>
+	</tr>
+		<table>
+	<br/><br/><br/>
+	<center>Open Requirements</center>
+  <table style="width:100%">
+	<tr bgcolor="#FF0000">
+   		<td>Reference</td>
+		<td>Technology</td>
+		<td>Location</td>
+		<td>Experience</td>
+   		<td>Target</td>
+		<td>Positions</td>
+		<td>Client</td>
+	</tr>
+	<tr>
+		<td>Om</td>
+		<td>Java with Jangular JS</td>
+		<td>Albany, NY</td>
+		<td>8+ Years</td>
+		<td>24-10-16</td>
+		<td>4</td>
+		<td>CMA</td>
+	</tr>
+	<tr>
+		<td>CMA</td>
+		<td>.Net</td>
+		<td>Albany, NY</td>
+		<td>10+ Years</td>
+		<td>24-10-16</td>
+		<td>1</td>
+		<td>CMA</td>
+	</tr>
+	<table>
+	<br/><br/><br/>
+	 <center>FC2C Hot List</center>
+  <table style="width:100%">
+	<tr bgcolor="A8077A">
+   		<td>Company</td>
+		<td>Name</td>
+		<td>Technology</td>
+		<td>Experience</td>
+   		<td>Location</td>
+		<td>ReLocation</td>
+		<td>Rate</td>
+		<td>Recruiter</td>
+	</tr>
+	<tr>
+		<td>FC2C</td>
+		<td>Aaqib</td>
+		<td>Oracle DBA</td>
+		<td>7+ Years</td>
+		<td>NC</td>
+		<td>Open</td>
+		<td>$50/hr</td>
+		<td>Uday</td>
+	</tr>
+	<tr>
+		<td>FC2C</td>
+		<td>Stalin</td>
+		<td>QA</td>
+		<td>9+ Years</td>
+		<td>NJ</td>
+		<td>Open</td>
+		<td>$55/hr</td>
+		<td>Uday</td>
+	</tr>
+		<tr>
+		<td>FC2C</td>
+		<td>Uday</td>
+		<td>BA</td>
+		<td>8+ Years</td>
+		<td>OR</td>
+		<td>Open</td>
+		<td>$55/hr</td>
+		<td>Uday</td>
+	</tr>
+	<table>
+	</strong></font>
+
+</div>
+</div>
+
+</body>
+
+</html>
+
