@@ -1,0 +1,13 @@
+pipeline
+{
+    agent any
+    
+    stages{
+        stage("Git Checkout"){
+            steps{
+               /* git credentialsId: 'Git', url: 'https://github.com/vijay-mg/VIJAY_INFO' */
+            }
+        }
+    }
+    
+}
