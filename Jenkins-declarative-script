@@ -2,6 +2,10 @@ pipeline
 {
     agent any
     
+    environment{
+    PATH="/opt/apache-maven/bin:$PATH"
+    }
+    
     stages{
       
        stage("Git Checkout"){
@@ -10,8 +14,14 @@ pipeline
                /*
                git credentialsId: 'Git', url: 'https://github.com/vijay-mg/VIJAY_INFO'
                */
-            }
+                 }
         } 
+        
+        stage("Maven Build"){
+        steps{
+           sh "mvn clean package"
+             }
+           }
        
     }
     
