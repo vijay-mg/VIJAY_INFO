@@ -11,9 +11,9 @@ pipeline
        stage("Git Checkout"){
             steps{
                echo "Git Checkout Successfully"
-               /*
+           
                git credentialsId: 'Git', url: 'https://github.com/vijay-mg/VIJAY_INFO'
-               */
+    
                  }
         } 
         
