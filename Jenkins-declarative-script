@@ -8,21 +8,21 @@ pipeline
     
     stages{
       
-       stage("Git Checkout"){
-            steps{
+          stage("Git Checkout"){
+             steps{
                echo "Git Checkout Successfully"
-           
+               /*
                git credentialsId: 'Git', url: 'https://github.com/vijay-mg/VIJAY_INFO'
-    
+               */
                  }
-        } 
+                              } 
         
-        stage("Maven Build"){
-        steps{
-           sh "mvn clean package"
-           sh mv target/*.war target/myweb.war
-             }
-           }
+          stage("Maven Build"){
+          steps{
+              sh "mvn clean package"
+              sh mv target/*.war target/myweb.war
+              }
+                             }
            
         stage("Deploy-dev"){
           steps{
@@ -32,9 +32,8 @@ pipeline
               ssh ec2-user@172.31.44.59 /opt/tomcat8/bin/shutdown.sh
               ssh ec2-user@172.31.44.59 /opt/tomcat8/bin/startup.sh
             """   
-               }
-          
-          }
+              } 
+            }         
         }   
        
     }
